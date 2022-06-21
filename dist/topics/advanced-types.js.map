@@ -1,0 +1,1 @@
+{"version":3,"file":"advanced-types.js","sourceRoot":"","sources":["../../src/topics/advanced-types.ts"],"names":[],"mappings":";AAIA,IAAI,KAAK,GAAG;IACX;QACC,IAAI,EAAE,YAAY;QAClB,GAAG,EAAE,EAAE;QACP,UAAU,EAAE,mBAAmB;KAC/B;IACD;QACC,IAAI,EAAE,aAAa;QACnB,GAAG,EAAE,EAAE;KACP;CACD,CAAA;AA8BD,IAAI,GAAG,GAAc,QAAQ,CAAA;AAE7B,OAAO,CAAC,GAAG,CAAC,GAAG,CAAC,CAAA"}
