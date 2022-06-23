@@ -113,10 +113,45 @@ class Circle extends Shape {
         console.log('Rendering a circle');
     }
 }
-let personInterface = {
-    name: 'Mosh'
-};
-let personType = {
-    name: 'Mosh'
+class GoogleCalendar {
+    constructor(name) {
+        this.name = name;
+    }
+    addEvent() {
+        throw new Error("Method not implemented.");
+    }
+    removeEvent() {
+        throw new Error("Method not implemented.");
+    }
+}
+class Logger {
+    constructor(logFile) {
+        this.logFile = logFile;
+    }
+    log(message) { }
+}
+class PersonExercise {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+class EmployeeExercise extends PersonExercise {
+    constructor(salary, firstName, lastName) {
+        super(firstName, lastName);
+        this.salary = salary;
+    }
+}
+let employee = {
+    name: 'John Smith',
+    salary: 50000,
+    address: {
+        street: 'Flinders st',
+        city: 'Melbourne',
+        zipCode: 3144,
+    },
 };
 //# sourceMappingURL=classes-interfaces-object-oriented-programming.js.map
