@@ -293,3 +293,178 @@ function printNames(people: Person[]) {
 
 
 // !!!!!!!!!!!!!			Abstract Classes and Methods			!!!!!!!!!!!!!!!!!!
+
+// If you want to stop us of being able to create an instance of the Shape class
+// we mark this class as abstract
+// with abstract keyword we are telling the TS compiler, that this class is abstract, not ready,
+// or it need another class, like circle to extend it.
+// Abstract class is like uncooked meal. Is not ready.
+
+abstract class Shape {
+	constructor(public color: string) {}
+
+	// abstract method can only exist in abstract classes
+	// abstract method have no implementation
+	abstract render(): void;
+}
+
+class Circle extends Shape {
+	constructor(public radius: number, color: string ){
+		super (color) // super keyword to call the constructor of the Base class, and pass the color
+	}
+
+	override render(): void {
+		console.log('Rendering a circle')
+	}
+}
+
+// let shape = new Shape('red')
+// shape.render()
+
+
+
+// !!!!!!!!!!!!!			Interfaces			!!!!!!!!!!!!!!!!!!
+
+// Interfaces - to define or the shape of an object
+
+// In TS, interfaces and types aliases can be used interchangebly
+// Both can be used to describe the shape of the object
+
+// We want to implement a calendar. Google calendar, Outlook and so on.
+// They are different callendars, but the should have something common.
+
+// We can define an abstract class. We cannot code addEvent function, because all calendars they might 
+// have a different implementation of that function. That is why we create an abstract class.
+
+// abstract class Calendar {
+// 	constructor(public name: string) {}
+
+// 	abstract addEvent(): void
+// 	abstract removeEvent(): void
+// }
+
+// Same implementation of an abstract class Calendar using interface:
+// Here we should describe a shape of every calendar object. Every calendar should 
+// have a name, and this 2 methods:
+// New implementation is shorter, more elegant
+
+interface Calendar {
+	name: string,
+	addEvent(): void,
+	removeEvent(): void
+}
+
+// In IS we don't have interfaces. Interfaces which we describe is purley use by 
+// the compiler for type checkin. After compile the code, there is nothing in JS file
+// if we use a interface
+
+// Should we use abstract classes or interfaces?
+
+// If we have just declarations, not method, that actually do something in this case is 
+// better to use an interface, then our code will be more concise and shorter.
+
+// Interfaces can't have a method implementations, only method declarations
+
+interface CloudCalendar extends Calendar {
+	sync(): void
+}
+
+// Now we want to have a real life class. We use implements keyword
+// ctr + .     -> komenda która autouzupełni interface
+
+class GoogleCalendar implements Calendar {
+	constructor(public name: string){}
+
+	addEvent(): void {
+		throw new Error("Method not implemented.")
+	}
+	removeEvent(): void {
+		throw new Error("Method not implemented.")
+	}
+}
+
+// We have a class that implements Calendar interface. Tomorrow we can create
+// a new class OutlookCalendar that impplements the same interface.
+// Both this classes will endup to having the same Shape. using interface we can 
+// describe the shape of an objecy 
+
+
+
+
+
+// EXERCISES
+
+// Exercise 1
+// Define a class called Logger that takes the name of a file in its constructor 
+// and provides a method for writing messages to that file. Don’t worry about the 
+// actual file I/O operations. Just define the class with the right members.
+
+// Solution 1
+
+class Logger {
+	constructor(public logFile: string) {}
+
+	log(message: string) {}
+}
+
+// Exercise 2
+// Given the Person class below, create a getter for getting the full name of a person
+
+// class PersonExercise {
+// 	constructor(public firstName: string, public lastName: string) {}
+// }
+
+// Solution 2
+
+class PersonExercise {
+	constructor(public firstName: string, public lastName: string) {}
+
+	get fullName() {
+		return `${this.firstName} ${this.lastName}`
+	}
+}
+
+// Exercise 3
+// Create a new class called Employee that extends Person and adds a new property called salary.
+
+class EmployeeExercise extends PersonExercise {
+	constructor(
+		public salary: number, 
+		firstName: string, 
+		lastName: string){
+		super(firstName, lastName)
+	}
+}
+
+// Exercise 4
+// What is the difference between private and protected members?
+
+// Solution 4
+// Privatemembers are not inherited by child classes
+
+// Exercise 5
+// Given the data below, define an interface for representing employees
+
+let employee = {
+	name:'John Smith',
+	salary:50_000,
+	address:{
+		street:'Flinders st',
+		city:'Melbourne',
+		zipCode:3144,
+	},
+};
+
+// Soultion 5
+
+interface Address {
+	street: string,
+	city: string,
+	zipCode: number
+}
+
+interface Employee {
+	name: string,
+	salary: number,
+	address: Address
+}

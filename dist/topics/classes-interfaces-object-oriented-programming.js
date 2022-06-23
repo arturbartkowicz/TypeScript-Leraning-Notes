@@ -99,4 +99,24 @@ function printNames(people) {
         console.log(person.fullName);
     }
 }
+class Shape {
+    constructor(color) {
+        this.color = color;
+    }
+}
+class Circle extends Shape {
+    constructor(radius, color) {
+        super(color);
+        this.radius = radius;
+    }
+    render() {
+        console.log('Rendering a circle');
+    }
+}
+let personInterface = {
+    name: 'Mosh'
+};
+let personType = {
+    name: 'Mosh'
+};
 //# sourceMappingURL=classes-interfaces-object-oriented-programming.js.map
