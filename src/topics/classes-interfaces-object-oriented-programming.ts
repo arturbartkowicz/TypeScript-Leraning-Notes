@@ -1,12 +1,13 @@
 // !!!!!!!!!			Creating Classes			!!!!!!!!!!!!!
 
+
 class Account {
   readonly id: number
   owner: string
   private _balance: number
 	nickname?: string
 
-  // when you hover over constructor you will see that the constructor always returns a bank account
+  // when you hover over constructor you will see that the constructor always returns an Account
   constructor(id: number, owner: string, _balance: number) {
     // this -> reference the current class
     this.id = id
@@ -32,6 +33,7 @@ class Account {
 
 
 // !!!!!!!!!!!!!			Creating Objects			!!!!!!!!!!!!!!!!!!
+
 
 let account = new Account(1, 'Artur', 0)
 account.deposit(100)
@@ -83,64 +85,67 @@ console.log(account.getBalance())
 //   }
 
 
-	// To jest to samo:
+// To jest to samo:
 
-	// class Account {
-	// 	nickname?: string
+// class Account {
+// 	nickname?: string
 
-	// 	constructor(
-	// 		public readonly id: number, 
-	// 		public owner: string, 
-	// 		private _balance: number) {
-	// 	}
-	// }
-
-
-	// !!!!!!!!!!!!!			Getters and Setters			!!!!!!!!!!!!!!!!!!
-
-	// This is the prev getBalance() method from the class. Thanks to 'get' keyword
-	//  we have getter method. Getter is a method inside of a class that we use to get a value of the property
-
-	// get balance(): number {
-	// 	return this._balance
-	// }
-
-	// With this syntax we can access that property like that:
-	// console.log(account.balace)
-
-	// we can access that property, but we can't set it. For set we need a setter method.
-
-	// set balance(value: number) {
-	// 	if (value < 0)
-	// 		throw new Error('Invalid value')
-	// 	this._balance = value
-	// }
+// 	constructor(
+// 		public readonly id: number, 
+// 		public owner: string, 
+// 		private _balance: number) {
+// 	}
+// }
 
 
-	// !!!!!!!!!!!!!			Index Signatures			!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!			Getters and Setters			!!!!!!!!!!!!!!!!!!
 
-	// In situations that we need to add a properties to an objject dynamically (which is against TS),
-	// but in this cases we use Index Signatures.
-	// Index Signatures for creating properties dynamically like JS, but we also get type checking.
-	// In the bottom example we can only assigne a string to the seatNumber
+// This is the prev getBalance() method from the class. Thanks to 'get' keyword
+//  we have getter method. Getter is a method inside of a class that we use to get a value of the property
 
-	class SeatAssignement {
-		// A1, A2 ...
-		// Mosh, John ...
-		//Index signature property
-		[seatNumber: string]: string
-	}
+// get balance(): number {
+// 	return this._balance
+// }
 
-	let seats = new SeatAssignement()
-	seats.A1 = 'Mosh'
-	// seats['A1'] = 'Mosh'  -> same think than above (different syntax)
-	seats.A2 = 'John'
-	console.log(seats) // => SeatAssignement { A1: 'Mosh', A2: 'John' }
+// With this syntax we can access that property like that:
+// console.log(account.balace)
+
+// we can access that property, but we can't set it. For set we need a setter method.
+
+// set balance(value: number) {
+// 	if (value < 0)
+// 		throw new Error('Invalid value')
+// 	this._balance = value
+// }
+
+
+// !!!!!!!!!!!!!			Index Signatures			!!!!!!!!!!!!!!!!!!
+
+
+// In situations that we need to add a properties to an object dynamically (which is against TS),
+// but in this cases we use Index Signatures.
+// Index Signatures for creating properties dynamically like JS, but we also get type checking.
+// In the bottom example we can only assigne a string to the seatNumber
+
+class SeatAssignement {
+	// A1, A2 ...
+	// Mosh, John ...
+	//Index signature property
+	[seatNumber: string]: string
+}
+
+let seats = new SeatAssignement()
+seats.A1 = 'Mosh'
+// seats['A1'] = 'Mosh'  -> same think than above (different syntax)
+seats.A2 = 'John'
+console.log(seats) // => SeatAssignement { A1: 'Mosh', A2: 'John' }
 
 
 
-	// !!!!!!!!!!!!!			Static Members			!!!!!!!!!!!!!!!!!!
-	// Static property belongs to a class not to an object, so we are gonna have a one instance of that property in a memory
+// !!!!!!!!!!!!!			Static Members			!!!!!!!!!!!!!!!!!!
+
+
+// Static property belongs to a class not to an object, so we are gonna have a one instance of that property in a memory
 
 class Ride {
 	// we want to keep track of number of active rides
@@ -184,6 +189,7 @@ console.log(RideOne.activeRides) // => 2
 
 // !!!!!!!!!!!!!			Inheritence			!!!!!!!!!!!!!!!!!!
 
+
 // mechanizm który pozwala na ponowne uuzycie kodu.
 
 // super -> keword to reference a base class
@@ -224,6 +230,7 @@ console.log(student.taketest())
 
 // !!!!!!!!!!!!!			Method Overriding			!!!!!!!!!!!!!!!!!!
 
+
 class Teacher extends Person{
 	// override -> tell the compiler that we are changing implementation of this method
 	override get fullName() {
@@ -237,6 +244,7 @@ console.log(teacher.fullName)
 
 
 // !!!!!!!!!!!!!			Polymorphizm			!!!!!!!!!!!!!!!!!!
+
 
 // When object can take many different forms
 
@@ -288,11 +296,13 @@ function printNames(people: Person[]) {
 
 // !!!!!!!!!!!!!			Private vs Protected members			!!!!!!!!!!!!!!!!!!
 
+
 // protected members are inherited, private members are not
 // protected use with caution, unless you know what you are doing 
 
 
 // !!!!!!!!!!!!!			Abstract Classes and Methods			!!!!!!!!!!!!!!!!!!
+
 
 // If you want to stop us of being able to create an instance of the Shape class
 // we mark this class as abstract
@@ -325,15 +335,16 @@ class Circle extends Shape {
 
 // !!!!!!!!!!!!!			Interfaces			!!!!!!!!!!!!!!!!!!
 
+
 // Interfaces - to define or the shape of an object
 
-// In TS, interfaces and types aliases can be used interchangebly
+// In TS, Interfaces and Types Aliases can be used interchangebly
 // Both can be used to describe the shape of the object
 
 // We want to implement a calendar. Google calendar, Outlook and so on.
-// They are different callendars, but the should have something common.
+// They are different callendars, but they should have something common.
 
-// We can define an abstract class. We cannot code addEvent function, because all calendars they might 
+// We can define an abstract class. We cannot code addEvent function, because all calendars might 
 // have a different implementation of that function. That is why we create an abstract class.
 
 // abstract class Calendar {
@@ -345,7 +356,7 @@ class Circle extends Shape {
 
 // Same implementation of an abstract class Calendar using interface:
 // Here we should describe a shape of every calendar object. Every calendar should 
-// have a name, and this 2 methods:
+// have a name, and this 2 methods (addEvent(), removeEvent())
 // New implementation is shorter, more elegant
 
 interface Calendar {
@@ -388,8 +399,12 @@ class GoogleCalendar implements Calendar {
 // Both this classes will endup to having the same Shape. using interface we can 
 // describe the shape of an objecy 
 
+// Używając interfejsów, możemy być pewni, że np w dwóch różnych klasach (GoogleCalendar, OutlookCalendar)
+// będziemy mieć takie samy nazwy metod, określone z góry, czy nazwę parametru. Póżniej implementacja
+// może być inna tych metod, ale wywołanie ich takie samo.
 
 
+// --------------------------------------------------------------------------------
 
 
 // EXERCISES
