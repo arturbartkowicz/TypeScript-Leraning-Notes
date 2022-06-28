@@ -44,8 +44,10 @@ console.log(account instanceof Account)
 
 // !!!!!!!!!!!!!			Read only and Optional Properties			!!!!!!!!!!!!!!
 
+
 // class Account {
-//   readonly id: number  -> example. When you later on will try to assign a different value of id, you will get an error
+//   readonly id: number  -> When you later on will try to assign a 
+//                           different value of id, you will get an error
 //   owner: string
 //   _balance: number
 //   nickname?: string    -> optional because of a questionmark
@@ -53,16 +55,19 @@ console.log(account instanceof Account)
 
 // !!!!!!!!!!!!!			Access Control Keywords			!!!!!!!!!!!!!!!!!!
 
+
 // Access Modifiers
 //  - public
-// 	- private - property accessable within class. By the convention we prefixed privet properties with underscore. 
-								// We only use private properties for writing robust code. Private keyword we can apply to the method as well
+// 	- private - property accessable within class. By the convention we prefixed privatt properties with underscore. 
+//              We only use private properties for writing robust code. Private keyword we can apply to the method 
+//              as well.
 // 	- protected
 
 // When we define a properties, all the properties are public by default
 
-// To return balance to the user we canno't do that:
-// console.log(account.balance) -> because balance is a private property now. But we can define a method which will return a value for us.
+// To return balance to the user we can't do that:
+// console.log(account.balance) -> because balance is a private property now. 
+//                                 But we can define a method which will return a value for us.
 
 console.log(account.getBalance())
 
@@ -70,7 +75,9 @@ console.log(account.getBalance())
 
 // !!!!!!!!!!!!!			Parameter Properties			!!!!!!!!!!!!!!!!!!
 
-// Tworząc konstruktory klas powtarzamy wiele kodu. Klasę Account możemy sprawniej napisać, bez powtarzania kilku linijek.
+
+// Tworząc konstruktory klas powtarzamy wiele kodu. Klasę Account możemy sprawniej napisać, 
+// bez powtarzania kilku linijek.
 
 // class Account {
 //   readonly id: number
@@ -100,8 +107,9 @@ console.log(account.getBalance())
 
 // !!!!!!!!!!!!!			Getters and Setters			!!!!!!!!!!!!!!!!!!
 
+
 // This is the prev getBalance() method from the class. Thanks to 'get' keyword
-//  we have getter method. Getter is a method inside of a class that we use to get a value of the property
+// we have getter method. Getter is a method inside of a class that we use to get a value of the property
 
 // get balance(): number {
 // 	return this._balance
@@ -130,7 +138,7 @@ console.log(account.getBalance())
 class SeatAssignement {
 	// A1, A2 ...
 	// Mosh, John ...
-	//Index signature property
+	// Index signature property
 	[seatNumber: string]: string
 }
 
@@ -145,7 +153,8 @@ console.log(seats) // => SeatAssignement { A1: 'Mosh', A2: 'John' }
 // !!!!!!!!!!!!!			Static Members			!!!!!!!!!!!!!!!!!!
 
 
-// Static property belongs to a class not to an object, so we are gonna have a one instance of that property in a memory
+// Static property belongs to a class not to an object, so we are gonna 
+// have a one instance of that property in a memory
 
 class Ride {
 	// we want to keep track of number of active rides
