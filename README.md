@@ -1,1 +1,1 @@
-# TypeScript-MOSH
+# TypeScript-notes
