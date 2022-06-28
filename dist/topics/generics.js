@@ -21,6 +21,23 @@ let result = fetch('url');
 function echo(value) {
     return value;
 }
-console.log(echo('we'));
-console.log(echo(123));
+echo('Albo number albo string');
+function echo1(value) {
+    return value;
+}
+echo1({ name: 'Artur' });
+class Store {
+    constructor() {
+        this._objects = [];
+    }
+    add(obj) {
+        this._objects.push(obj);
+    }
+}
+class CompressibleStore extends Store {
+    compress() { }
+}
+let store = new CompressibleStore();
+class SearchableStore extends Store {
+}
 //# sourceMappingURL=generics.js.map

@@ -1,3 +1,18 @@
+// Type Aliases
+type EmployeeAlias = {
+	readonly id: number,
+  name: string,
+  retire: (date: Date) => void
+}
+  
+let employeeAlias: EmployeeAlias = { 
+ id: 1, 
+ name: 'Mosh',
+ retire: (date: Date) => {
+  console.log(date)
+ } 
+}
+
 // Exercises
 
 // 1 Given the data below, define a type alias for representing users

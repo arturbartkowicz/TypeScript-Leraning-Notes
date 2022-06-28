@@ -2,13 +2,15 @@
 
 // Generic - common and reusable solutions
 
-// Problem z jakim się mierzymy? -> chcemy utworzyć klasą która będzie tworzyła
-// key - value pary . Ale jak w konstruktorze określimy, że pierwszy parametr
+// Problem z jakim się mierzymy? -> chcemy utworzyć klasę która będzie tworzyła
+// key-value pary. Ale jak w konstruktorze określimy, że pierwszy parametr
 // ma być typu number a drugi typu string, to ktoś kto by chciał utworzyć key-value
 // parę ale key żeby był stringiem, to już z tej klasy skorzystać nie może. Musiałby
 // utworzyć nową klasę.
 
+
 // !!!!!!!!!!!!!           Generic Classes         !!!!!!!!!!
+
 
 // Generic classes in TS are the same that template classes in C++
 // K, V - it can be different word
@@ -50,15 +52,15 @@ let numbers = utils.wrapInArray(1)
 // let numbers = ArrayUtils.wrapInArray(1)
 
 
-
 // !!!!!!!!!!!!!           Generic Interfaces         !!!!!!!!!!
+
 
 // Mamy 2 endpointy:
 
 // http://mywebsite.com/users
 // http://mywebsite.com/produscts
 
-// Storzymy interfejs który będzie reprezentował zapytanie do jednego z tych endpointów
+// Stworzymy interfejs który będzie reprezentował zapytanie do jednego z tych endpointów
 
 interface Result<T>{
 	data: T | null // because if we have an error, then we don't have data
@@ -67,6 +69,7 @@ interface Result<T>{
 
 // Now wen we have an interface, lets try to use it
 // Because the function should return a generic result, we should add a generic type after fetch key-word
+
 function fetch<T>(url: string): Result<T> {
 	return { data: null, error: null }
 }
@@ -96,9 +99,9 @@ function echo1<T extends { name: string }>(value: T): T {
 }
 
 echo1({name: 'Artur'}) // Możemy określić shape przekazywanego obiektu. Teraz możemy przekazać obiekt
-											 // Który odpowiada tylko temu shape-owi
-											 // We can extend by another type or even a class which inherit from prev class.
-											 // Więcej info w kursie
+					   // Który odpowiada tylko temu shape-owi
+					   // We can extend by another type or even a class which inherit from prev class.
+					   // Więcej info w kursie
 
 
 // !!!!!!!!!!!!!           Extending Generic Classes         !!!!!!!!!!
@@ -129,3 +132,19 @@ class Store<T> {
 // We have a generic class, now lets try to extend this class.
 
 // Scenario 1:
+// Pass on the generic type parameter. Generic type parameter which we have in the base class
+// it is also going to be used in the child class
+
+class CompressibleStore<T> extends Store<T> {
+	compress() {}
+}
+
+let store = new CompressibleStore<ProductCommerce>()
+// store.add() || store.compress()      - now we have available 2 functions
+
+// Scenario 2:
+// Implement a method for finding objects:
+
+class SearchableStore<T> extends Store<T> {
+	
+}
