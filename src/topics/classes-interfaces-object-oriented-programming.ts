@@ -7,7 +7,9 @@ class Account {
   private _balance: number
 	nickname?: string
 
-  // when you hover over constructor you will see that the constructor always returns an Account
+  // when you hover over constructor you will see that the constructor always 
+	// returns an Account
+
   constructor(id: number, owner: string, _balance: number) {
     // this -> reference the current class
     this.id = id
@@ -37,8 +39,9 @@ class Account {
 
 let account = new Account(1, 'Artur', 0)
 account.deposit(100)
-// If you are using a type guard to narrow down a type, and you are dealing with a custom object,
-// you should use an instanceof operator instead of type:
+// If you are using a type guard to narrow down a type, and you are dealing with 
+//a custom object, you should use an instanceof operator instead of type:
+
 console.log(account instanceof Account)
 
 
@@ -58,26 +61,27 @@ console.log(account instanceof Account)
 
 // Access Modifiers
 //  - public
-// 	- private - property accessable within class. By the convention we prefixed privatt properties with underscore. 
-//              We only use private properties for writing robust code. Private keyword we can apply to the method 
-//              as well.
+// 	- private - property accessable within class. By the convention we prefixed 
+//              private properties with underscore. We only use private properties 
+//							for writing robust code. Private keyword we can apply to the 
+//							method as well.
 // 	- protected
 
 // When we define a properties, all the properties are public by default
 
 // To return balance to the user we can't do that:
 // console.log(account.balance) -> because balance is a private property now. 
-//                                 But we can define a method which will return a value for us.
+//                                 But we can define a method which will return 
+//																 a value for us.
 
 console.log(account.getBalance())
-
 
 
 // !!!!!!!!!!!!!			Parameter Properties			!!!!!!!!!!!!!!!!!!
 
 
-// Tworząc konstruktory klas powtarzamy wiele kodu. Klasę Account możemy sprawniej napisać, 
-// bez powtarzania kilku linijek.
+// Tworząc konstruktory klas powtarzamy wiele kodu. Klasę Account możemy 
+// sprawniej napisać, bez powtarzania kilku linijek.
 
 // class Account {
 //   readonly id: number
@@ -109,7 +113,8 @@ console.log(account.getBalance())
 
 
 // This is the prev getBalance() method from the class. Thanks to 'get' keyword
-// we have getter method. Getter is a method inside of a class that we use to get a value of the property
+// we have getter method. Getter is a method inside of a class that we use to 
+// get a value of the property
 
 // get balance(): number {
 // 	return this._balance
@@ -130,10 +135,10 @@ console.log(account.getBalance())
 // !!!!!!!!!!!!!			Index Signatures			!!!!!!!!!!!!!!!!!!
 
 
-// In situations that we need to add a properties to an object dynamically (which is against TS),
-// but in this cases we use Index Signatures.
-// Index Signatures for creating properties dynamically like JS, but we also get type checking.
-// In the bottom example we can only assigne a string to the seatNumber
+// In situations that we need to add a properties to an object dynamically 
+// (which is against TS),but in this cases we use Index Signatures.
+// Index Signatures for creating properties dynamically like JS, but we also 
+// get type checking.In the bottom example we can only assigne a string to the seatNumber
 
 class SeatAssignement {
 	// A1, A2 ...
