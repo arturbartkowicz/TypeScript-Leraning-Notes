@@ -7,6 +7,11 @@ class KeyValuePair {
 }
 let pair1 = new KeyValuePair('String', 'KeyIsAString, ValueAString');
 let pair2 = new KeyValuePair(10, 'KeyIsANumber, ValueAString');
+let pair3 = new KeyValuePair(10, 'KeyIsANumber, ValueAString');
+function wrapInArrayFunction(value) {
+    return [value];
+}
+let wrapCall = wrapInArrayFunction('1');
 class ArrayUtils {
     wrapInArray(value) {
         return [value];
@@ -39,5 +44,44 @@ class CompressibleStore extends Store {
 }
 let store = new CompressibleStore();
 class SearchableStore extends Store {
+    find(name) {
+        return this._objects.find(obj => obj.name === name);
+    }
+}
+class ProductStore extends Store {
+    filterByCategory(category) {
+        return [];
+    }
+}
+class StoreTest {
+    constructor() {
+        this._objects = [];
+    }
+    add(obj) {
+        this._objects.push(obj);
+    }
+    find(property, value) {
+        return this._objects.find(obj => obj[property] === value);
+    }
+}
+let storeTest = new StoreTest();
+storeTest.add({ name: 'a', price: 1 });
+storeTest.find('name', 'a');
+storeTest.find('price', 1);
+let computer = {
+    name: 'Mac',
+    price: 100
+};
+let computer1 = {
+    name: 'Mac',
+    price: 100
+};
+function echo2(arg) { return arg; }
+function echo5(arg) { return arg; }
+function printName(obj) { console.log(obj.name); }
+class Entity {
+    constructor(id) {
+        this.id = id;
+    }
 }
 //# sourceMappingURL=generics.js.map
