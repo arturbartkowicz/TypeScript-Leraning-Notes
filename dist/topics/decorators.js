@@ -44,10 +44,10 @@ ProfileComponent2 = __decorate([
 ], ProfileComponent2);
 function Log(target, methodName, descriptor) {
     let original = descriptor.value;
-    descriptor.value = function (message) {
+    descriptor.value = function (...args) {
         console.log('Before');
         original.call(this, 'Musimy przekazać dwa argumenty. this and second some string');
-        original.call(this, message);
+        original.call(this, ...args);
         console.log('After');
     };
 }
@@ -61,4 +61,61 @@ __decorate([
 ], Person1.prototype, "say", null);
 let person1 = new Person1();
 person1.say('Hello');
+function Capitalize(target, methodName, descriptor) {
+    const original = descriptor.get;
+    descriptor.get = function () {
+        const result = original === null || original === void 0 ? void 0 : original.call(this);
+        return (typeof result === 'string') ? result.toUpperCase() : result;
+    };
+}
+class Person2 {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+__decorate([
+    Capitalize
+], Person2.prototype, "fullName", null);
+let person2 = new Person2('Artur', 'Bartkowicz');
+console.log(person2.fullName);
+function MinLength(length) {
+    return (target, propertyName) => {
+        let value;
+        const descriptor = {
+            get() { return value; },
+            set(newValue) {
+                if (newValue.length < 4)
+                    throw new Error(`${propertyName} should be at least ${length} characters long`);
+                value = newValue;
+            }
+        };
+        Object.defineProperty(target, propertyName, descriptor);
+    };
+}
+class User {
+    constructor(password) {
+        this.password = password;
+    }
+}
+__decorate([
+    MinLength(4)
+], User.prototype, "password", void 0);
+let user1 = new User('1234');
+console.log(user1.password);
+function Sauce(sauce) {
+    return (constructor) => {
+        constructor.prototype.sauce = sauce;
+    };
+}
+let Pizza = class Pizza {
+};
+Pizza = __decorate([
+    Sauce('pesto')
+], Pizza);
+let pizza = new Pizza();
+console.log(pizza);
 //# sourceMappingURL=decorators.js.map
