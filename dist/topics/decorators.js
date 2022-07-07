@@ -117,5 +117,4 @@ Pizza = __decorate([
     Sauce('pesto')
 ], Pizza);
 let pizza = new Pizza();
-console.log(pizza);
 //# sourceMappingURL=decorators.js.map

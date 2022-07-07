@@ -16,7 +16,7 @@
 
 
 
-// If we want to apply our decorator to a class, we shoul pass to a function
+// If we want to apply our decorator to a class, we should pass to a function
 // decorator only one argument.
 // If the arguments type is a :Function, compiler will assume that we want to apply
 // that decorator on a class.
@@ -242,4 +242,3 @@ function Sauce(sauce: string){
 class Pizza {}
 
 let pizza = new Pizza()
-console.log(pizza.sauce)
