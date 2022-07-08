@@ -1,4 +1,10 @@
-// Type Aliases
+// AGENDA:
+// - Type Aliases
+
+
+// ----------     Type Aliases      ----------
+
+
 type EmployeeAlias = {
 	readonly id: number,
   name: string,
@@ -12,6 +18,8 @@ let employeeAlias: EmployeeAlias = {
   console.log(date)
  } 
 }
+
+
 
 // Exercises
 
