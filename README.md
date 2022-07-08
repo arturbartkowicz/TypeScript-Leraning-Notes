@@ -1,4 +1,5 @@
-# TypeScript-MOSH
+
+# TypeScript
 
 ### The purpose of this repo is collect knowlage about TypeScript along with some exercises
 
