@@ -1,5 +1,14 @@
 // AGENDA:
 // - Type Aliases
+// - Union Types
+// - Intersection Types
+// - Literal Types
+// - Nullable Types
+// - Optional Chaining
+// - The Nullish Coaelscing Operator
+// - Type Assertions
+// - The unknown Type
+// - The never Type
 
 
 // ----------     Type Aliases      ----------
@@ -19,6 +28,81 @@ let employeeAlias: EmployeeAlias = {
  } 
 }
 
+// Type aliases might be a good alternative to the enums
+
+enum ContactStatus {
+  Active = 'active',
+  Inactive = 'inactive',
+  New = 'new'
+}
+
+// With type aliases
+type ContactStatusAlias = 'active' | 'inactive' | 'new'
+// You can use that alias in another interface
+
+
+// ----------     Union Types      ----------
+
+
+// With union types, we can give a variable or a function parameter more than one type.
+// Narrowing technique. We are going to narrow the weight type, to a more specific type.
+
+function kgToLbs(weight: number | string): number {
+ // Narrowing
+ if (typeof weight === 'number')
+  return weight * 2.2
+ else
+  return parseInt(weight) * 2.2
+}
+  
+  kgToLbs(10)
+  kgToLbs('10kg')
+
+  // Another example:
+  type ContactBirthDay = Date | number | string
+
+  interface Contact {
+    id: number
+    birthDay?: ContactBirthDay
+  }
+
+
+// ----------     Intersection      ----------
+
+
+// Another technique for combining types.
+
+type Draggable = {
+  drag: () => void
+}
+
+type Resizable = {
+  resize: () => void
+}
+
+type UIWidget = Draggable & Resizable
+
+// Thanks to intersection we have defined new type, UIWidged which is Draggable and Resizable
+// Now with this type in place we can declare a variable which is a textBox.
+// To initialize this object, we needt to implement all members of draggable and resizable.
+
+let textBox: UIWidget = {
+	drag: () => {},
+	resize: () => {}
+}
+
+
+// Another example
+
+interface Address {
+  line1: string
+  line2: string
+}
+
+type AddressableContact = Contact & Address
+
+
+//--------------------------------------------------------------------------------------
 
 
 // Exercises
