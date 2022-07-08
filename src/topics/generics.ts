@@ -5,7 +5,7 @@
 // - Generic Interfaces
 // - Generic Constraints
 // - Extending Generic Classes
-// - The keyof parameter
+// - The keyof parameter/operator
 // - Type mapping
 
 
@@ -201,7 +201,7 @@ class ProductStore extends Store<ProductCommerce> {
 // - Pass the generic type parameter to the child class.
 
 
-// ----------     The keyof parameter     ----------
+// ----------     The keyof parameter/operator     ----------
 
 
 interface ProductTest {
@@ -234,8 +234,49 @@ let storeTest = new StoreTest<ProductTest>()
 storeTest.add({name: 'a', price: 1})
 storeTest.find('name', 'a')
 storeTest.find('price', 1)
-// storeTest.find('nonExistingProperty', 1) // To wyżuci błąd. Żeby się przed tym zabezpieczyć
+                      // storeTest.find('nonExistingProperty', 1) 
+                      // To wyżuci błąd. Żeby się przed tym zabezpieczyć
 										 	// używamy keyof operator
+
+// Another examples
+// keof operator - referenes the type of given field
+
+type ContactName = string;
+type ContactStatus1 = "active" | "inactive" | "new"
+type ContactBirthDate = Date | number | string
+
+interface Contact  {
+    id: number;
+    name: ContactName;
+    birthDate?: ContactBirthDate;
+    status?: ContactStatus1;
+}
+
+let primaryContact: Contact = {
+    id: 12345,
+    name: "Jamie Johnson",
+    status: "active"
+}
+// This line defines a typ alias consisting all of the properties on the Contact type
+// Another word, a variable of this type may only contain values matching the names of 
+// the properties on the Contact
+type ContactFields = keyof Contact
+
+const fieldContact: ContactFields = "name"
+
+// This functioon accepts 2 parameters. 
+// - an object
+// - an name of the property on that object
+// The function then returns the value of that object property dynamically using JS index syntax
+
+// keyof Contact limits the values of the secon elements, so you can't pass wrong value
+function getValue<T>(source: T, propertyName: keyof T){
+  return source[propertyName]
+}
+
+const value = getValue({min: 1, max: 200}, "max") // in quotes TS will restrict values which we can pass
+
+// keyof operator is great to contrain your generic types
 
 
 // ----------     Type mapping      ----------

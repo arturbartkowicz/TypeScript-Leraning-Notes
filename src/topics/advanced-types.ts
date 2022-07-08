@@ -28,6 +28,18 @@ let employeeAlias: EmployeeAlias = {
  } 
 }
 
+// Type aliases might be a good alternative to the enums
+
+enum ContactStatus {
+  Active = 'active',
+  Inactive = 'inactive',
+  New = 'new'
+}
+
+// With type aliases
+type ContactStatusAlias = 'active' | 'inactive' | 'new'
+// You can use that alias in another interface
+
 
 // ----------     Union Types      ----------
 
@@ -89,7 +101,9 @@ interface Address {
 
 type AddressableContact = Contact & Address
 
+
 //--------------------------------------------------------------------------------------
+
 
 // Exercises
 
