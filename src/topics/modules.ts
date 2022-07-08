@@ -1,4 +1,9 @@
-// !!!!!!!!!!!!!!!!!!!!!           Exporting Modules           !!!!!!!!!!!!!!!!!!!!!!
+// AGENDA:
+// - Exporting Modules
+// - Module re-exporting
+
+
+// ----------     Exporting Modules     ----------
 
 
 export class TestModule {
@@ -10,7 +15,7 @@ export class TestModule {
 }
 
 
-// !!!!!!!!!!!!!!!!!!!!!           Module re-exporting           !!!!!!!!!!!!!!!!!!!!!!
+// ----------     Module re-exporting     ----------
 
 
 

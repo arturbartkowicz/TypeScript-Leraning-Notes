@@ -1,4 +1,16 @@
-// !!!!!!!!!!!!!           Generic         !!!!!!!!!!
+// AGENDA:
+// - Generic
+// - Generic Classes
+// - Generic Functions
+// - Generic Interfaces
+// - Generic Constraints
+// - Extending Generic Classes
+// - The keyof parameter
+// - Type mapping
+
+
+// ----------     Generic     ----------
+
 
 // Generic - common and reusable solutions
 
@@ -9,7 +21,7 @@
 // utworzyć nową klasę.
 
 
-// !!!!!!!!!!!!!           Generic Classes         !!!!!!!!!!
+// ----------     Generic Classes     ----------
 
 
 // Generic classes in TS are the same that template classes in C++
@@ -26,7 +38,7 @@ let pair2 = new KeyValuePair<number, string>(10, 'KeyIsANumber, ValueAString')
 let pair3 = new KeyValuePair(10, 'KeyIsANumber, ValueAString')
 
 
-// !!!!!!!!!!!!!           Generic Functions         !!!!!!!!!!
+// ----------     Generic Functions     ----------
 
 
 // key-word 'function' we only use in a stand alone functions. When that function is in the class
@@ -59,7 +71,7 @@ let numbers = utils.wrapInArray(1)
 // let numbers = ArrayUtils.wrapInArray(1)
 
 
-// !!!!!!!!!!!!!           Generic Interfaces         !!!!!!!!!!
+// ----------     Generic Interfaces      ----------
 
 
 // Mamy 2 endpointy:
@@ -94,9 +106,7 @@ let result = fetch<User>('url')
 //result.data.			-> After a coma we will see all properties of user object (Uncomment and test)
 
 
-
-// !!!!!!!!!!!!!           Generic Constraints         !!!!!!!!!!
-
+// ----------     Generic Constraints     ----------
 
 
 // Constraint or limit of number passing objects to a function
@@ -118,9 +128,7 @@ echo1({name: 'Artur'}) // Możemy określić shape przekazywanego obiektu. Teraz
 					   // Więcej info w kursie
 
 
-
-// !!!!!!!!!!!!!           Extending Generic Classes         !!!!!!!!!!
-
+// ----------     Extending Generic Classes     ----------
 
 
 // We are building an E-commerce application, so we have objects like: product, categories, shopping carts...
@@ -187,15 +195,13 @@ class ProductStore extends Store<ProductCommerce> {
 	}
 }
 
-
-
 // When we extending a generic class we have 3 options:
 // - Fix the generic type parameter
 // - Restrict the generic type parameter
 // - Pass the generic type parameter to the child class.
 
 
-// !!!!!!!!!!!!!           The keyof parameter         !!!!!!!!!!
+// ----------     The keyof parameter     ----------
 
 
 interface ProductTest {
@@ -232,8 +238,8 @@ storeTest.find('price', 1)
 										 	// używamy keyof operator
 
 
+// ----------     Type mapping      ----------
 
-// !!!!!!!!!!!!!           Type mapping         !!!!!!!!!!
 
 // Sometime we need to base a type on another type. This is called type mapping
 interface Computer {
@@ -291,9 +297,7 @@ type Optional<T> = {
 // This is so populart, that is available on typescriptlang.org website under UTILITY TYPES
 
 
-
-
-// --------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------
 
 
 // EXERCISES

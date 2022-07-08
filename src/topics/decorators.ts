@@ -1,5 +1,15 @@
-// !!!!!!!!!			What are decorators			!!!!!!!!!!!!!
+// AGENDA:
+// - What are decorators
+// - Class decorators
+// - Parameterized decorators
+// - Decorator Composition
+// - Method Decorators
+// - Accessor Decorators
+// - Property Decorators
+// - Parameter Decorator
 
+
+// ----------			What are decorators			----------
 
 
 // Attributes that we are apply to the classes and their members and with them we can
@@ -11,9 +21,7 @@
 // To use decorators we have to enable in tsconfig 'experimentaldecorators'
 
 
-
-// !!!!!!!!!			Class decorators			!!!!!!!!!!!!!
-
+// ----------			Class decorators			----------
 
 
 // If we want to apply our decorator to a class, we should pass to a function
@@ -44,9 +52,7 @@ class ProfileComponent {
 // once
 
 
-
-// !!!!!!!!!			Parameterized decorators			!!!!!!!!!!!!!
-
+// ----------			Parameterized decorators			----------
 
 
 type ComponentOptions = {
@@ -72,9 +78,7 @@ class ProfileComponent1 {
 // We can pass ex. an object as an argument decorator
 
 
-
-// !!!!!!!!!			Decorator Composition  		!!!!!!!!!!!!!
-
+// ----------			Decorator Composition  		----------
 
 
 // We can apply multiple decorators to its class or its
@@ -97,8 +101,7 @@ class ProfileComponent2 {
 }
 
 
-
-// !!!!!!!!!			Method Decorators  		!!!!!!!!!!!!!
+// ----------			Method Decorators  		----------
 
 
 // To apply decorator to a method we need 3 parameters
@@ -141,8 +144,7 @@ person1.say('Hello') // Hello zostanie zastąpione tym co było w dekoratorze, a
                      // musimy przekazać argument
 
 
-
-// !!!!!!!!!			Accessor Decorators  		!!!!!!!!!!!!!
+// ----------			Accessor Decorators  		----------
 
 
 // Define a decorator which will capitalize the getter method
@@ -171,10 +173,7 @@ let person2 = new Person2('Artur', 'Bartkowicz')
 console.log(person2.fullName)
 
 
-
-
-// !!!!!!!!!			Property Decorators  		!!!!!!!!!!!!!
-
+// ----------			Property Decorators  		----------
 
 
 // Very similar to method decorators, but they don't have a property descriptor
@@ -213,13 +212,14 @@ console.log(user1.password)
 
 
 
-// !!!!!!!!!			Parameter Decorator  		!!!!!!!!!!!!!
+// ----------			Parameter Decorator  		----------
+
 
 // We don't use them very often, but if we design a framework for other people to use, then we should know 
 // how this parameter is going to work -> then checkout documentation
 
 
-
+// -------------------------------------------------------------------------------------------------------
 
 
 // Exercise!

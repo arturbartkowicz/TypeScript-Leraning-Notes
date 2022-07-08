@@ -1,10 +1,27 @@
-// Array
+// AGENDA:
+// - Array
+// - Touple
+// - Enums
+// - Function
+// - Function without return value
+// - Objects
+
+
+// ----------     Array     ----------
+
+
 let numbers1: number[] = [1, 2, 3]
 
-// Touple ()
+
+// ----------     Touple      ----------
+
+
 let user: [number, string] = [10, 'Artur']
 
-// Enums
+
+// ----------     Enums     ----------
+
+
 enum Size {
     Small,
     Medium,
@@ -13,18 +30,26 @@ enum Size {
 
 console.log(Size.Large)
 
-// Function
+
+// ----------     Function      ----------
+
+
 function calculateTax (income: number): number {
 	return 0;
 }
 
-//Function without return value
+
+// ----------     Function without return value     ----------
+
+
 function calculateTaxTest (income: number): void {}
 
 let calculatedTax = calculateTax(10)
 console.log(calculatedTax)
 
-// Objects
+
+// ----------     Objects       ----------
+
 
 let employeeObject: {  id: number, name: string, fax?: number } = {id: 10, name: 'Artur'}
 

@@ -1,4 +1,21 @@
-// !!!!!!!!!			Creating Classes			!!!!!!!!!!!!!
+// AGENDA:
+// - Creating Classes
+// - Creating Objects
+// - Read only and Optional Properties
+// - Access Control Keywords
+// - Parameter Properties
+// - Getters and Setters
+// - Index Signatures
+// - Static Members
+// - Inheritence
+// - Method Overriding
+// - Polymorphizm
+// - Private vs Protected members
+// - Abstract Classes and Methods
+// - Interfaces
+
+
+// ----------			Creating Classes			----------
 
 
 class Account {
@@ -32,7 +49,7 @@ class Account {
 }
 
 
-// !!!!!!!!!!!!!			Creating Objects			!!!!!!!!!!!!!!!!!!
+// ----------			Creating Objects			----------
 
 
 let account = new Account(1, 'Artur', 0)
@@ -42,7 +59,7 @@ account.deposit(100)
 console.log(account instanceof Account)
 
 
-// !!!!!!!!!!!!!			Read only and Optional Properties			!!!!!!!!!!!!!!
+// ----------			Read only and Optional Properties			----------
 
 
 // class Account {
@@ -53,7 +70,7 @@ console.log(account instanceof Account)
 //   nickname?: string    -> optional because of a questionmark
 
 
-// !!!!!!!!!!!!!			Access Control Keywords			!!!!!!!!!!!!!!!!!!
+// ----------			Access Control Keywords			----------
 
 
 // Access Modifiers
@@ -73,7 +90,7 @@ console.log(account.getBalance())
 
 
 
-// !!!!!!!!!!!!!			Parameter Properties			!!!!!!!!!!!!!!!!!!
+// ----------			Parameter Properties			----------
 
 
 // Tworząc konstruktory klas powtarzamy wiele kodu. Klasę Account możemy sprawniej napisać, 
@@ -105,7 +122,7 @@ console.log(account.getBalance())
 // }
 
 
-// !!!!!!!!!!!!!			Getters and Setters			!!!!!!!!!!!!!!!!!!
+// ----------			Getters and Setters			----------
 
 
 // This is the prev getBalance() method from the class. Thanks to 'get' keyword
@@ -127,7 +144,7 @@ console.log(account.getBalance())
 // }
 
 
-// !!!!!!!!!!!!!			Index Signatures			!!!!!!!!!!!!!!!!!!
+// ----------			Index Signatures			----------
 
 
 // In situations that we need to add a properties to an object dynamically (which is against TS),
@@ -150,7 +167,7 @@ console.log(seats) // => SeatAssignement { A1: 'Mosh', A2: 'John' }
 
 
 
-// !!!!!!!!!!!!!			Static Members			!!!!!!!!!!!!!!!!!!
+// ----------			Static Members			----------
 
 
 // Static property belongs to a class not to an object, so we are gonna 
@@ -196,11 +213,10 @@ ride22.start()
 console.log(RideOne.activeRides) // => 2
 
 
-// !!!!!!!!!!!!!			Inheritence			!!!!!!!!!!!!!!!!!!
+// ----------			Inheritence			----------
 
 
 // mechanizm który pozwala na ponowne uuzycie kodu.
-
 // super -> keword to reference a base class
 
 class Person {
@@ -237,7 +253,7 @@ console.log(student.taketest())
 // Super classes we should implement in a seperate files
 
 
-// !!!!!!!!!!!!!			Method Overriding			!!!!!!!!!!!!!!!!!!
+// ----------			Method Overriding			----------
 
 
 class Teacher extends Person{
@@ -251,8 +267,7 @@ let teacher = new Teacher('Muhamad', 'Abduhl')
 console.log(teacher.fullName)
 
 
-
-// !!!!!!!!!!!!!			Polymorphizm			!!!!!!!!!!!!!!!!!!
+// ----------			Polymorphizm			----------
 
 
 // When object can take many different forms
@@ -303,16 +318,14 @@ function printNames(people: Person[]) {
 }
 
 
-
-
-// !!!!!!!!!!!!!			Private vs Protected members			!!!!!!!!!!!!!!!!!!
+// ----------			Private vs Protected members			----------
 
 
 // protected members are inherited, private members are not
 // protected use with caution, unless you know what you are doing 
 
 
-// !!!!!!!!!!!!!			Abstract Classes and Methods			!!!!!!!!!!!!!!!!!!
+// ----------			Abstract Classes and Methods			----------
 
 
 // If you want to stop us of being able to create an instance of the Shape class
@@ -343,8 +356,7 @@ class Circle extends Shape {
 // shape.render()
 
 
-
-// !!!!!!!!!!!!!			Interfaces			!!!!!!!!!!!!!!!!!!
+// ----------			Interfaces			----------
 
 
 // Interfaces - to define or the shape of an object
