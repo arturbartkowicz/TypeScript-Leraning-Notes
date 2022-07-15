@@ -9,6 +9,11 @@
 // - Type Assertions
 // - The unknown Type
 // - The never Type
+// - typeof keyword
+// - kyeof keyword
+// - Indexed access type
+// - keof typeof
+// - record type
 
 
 // ----------     Type Aliases      ----------
@@ -99,7 +104,99 @@ interface Address {
   line2: string
 }
 
+interface Example {
+  line3: number
+  line4: Address
+}
+
 type AddressableContact = Contact & Address
+
+
+// ----------     typeof operator      ----------
+
+
+// This is JS keyword. We can use it in TS on various ways, ex. for Narrowing
+
+// but also in many other ways:
+
+const myType = { min: 1, max: 200 } // TS interfer the type ot this variable
+function save(source: typeof myType){} // With this code I can assure, that if someone
+                                       // want to call this function, the arameter which you
+                                       // can pass, must be same structure, as defined myType variable.
+
+
+                              
+// ----------     keyof keyword      ----------
+
+
+interface Test5 {
+  id: number
+  name: string
+}
+
+type TestBasedOnTest5 = keyof Test5 // -> type alias consisting all of the properties
+// on the Contact type. In other words. The value of that type, may only contains 
+// values matching the names of the properties on the Test5. id and name
+
+
+// ----------     Indexed access type      ----------
+
+
+type Awesome = Contact['id'] // type Awesome matches now number
+
+// I can dig in more complex structures
+
+type Awesome1 = Example['line4']['line2'] // line4 odnosi się do interfejsu Address
+                                          // i dlatego Awesome1 jest stringiem
+
+
+interface ContactEvent {
+  contactId: Contact['id'] // describe a good intentions
+}
+
+
+// ----------     keyof typeof      ----------
+
+
+enum ColorsEnum {
+  white = '#ffffff',
+  black = '#000000',
+}
+
+type Colors = keyof typeof ColorsEnum;
+
+// last line is equivalent to:
+
+// type Colors = 'white' | 'black'
+
+//https://stackoverflow.com/questions/55377365/what-does-keyof-typeof-mean-in-typescript
+
+//nice explanation of the issue
+// W skrócie to keyof typeof pozwala wziąć obiekt i uwzglądnić a argumentach tylko jego klucze, nic więcej.
+
+
+
+
+// ----------     record type      ----------
+
+
+//  very flexible type definition that allows you to define some structure and typing without to detail
+// every possible property. Syntax is simple:
+// It is a generic syntax with two generic parameters
+// - first: possible property values
+// - second: possible property types
+
+let x: Record<string, string> = {name: 'Robert'}
+// x.number = '1234'  -> To byłoby ok
+// x.number = 1234  -> To już jest wyłapane przez TS compiler
+
+// Chyba że uzyję union i drugi parametr zaakceptuje też number
+
+// let x: Record<string, string | number> = {name: 'Robert'}
+
+
+
+
 
 
 //--------------------------------------------------------------------------------------

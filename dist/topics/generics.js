@@ -68,6 +68,16 @@ let storeTest = new StoreTest();
 storeTest.add({ name: 'a', price: 1 });
 storeTest.find('name', 'a');
 storeTest.find('price', 1);
+let primaryContact = {
+    id: 12345,
+    name: "Jamie Johnson",
+    status: "active"
+};
+const fieldContact = "name";
+function getValue(source, propertyName) {
+    return source[propertyName];
+}
+const value = getValue({ min: 1, max: 200 }, "max");
 let computer = {
     name: 'Mac',
     price: 100
