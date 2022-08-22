@@ -75,7 +75,7 @@ console.log(account instanceof Account)
 
 // Access Modifiers
 //  - public
-// 	- private - property accessable within class. By the convention we prefixed privatt properties with underscore. 
+// 	- private - property accessable within class. By the convention we prefixed private properties with underscore. 
 //              We only use private properties for writing robust code. Private keyword we can apply to the method 
 //              as well.
 // 	- protected

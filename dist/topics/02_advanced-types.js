@@ -32,4 +32,4 @@ var ColorsEnum;
     ColorsEnum["black"] = "#000000";
 })(ColorsEnum || (ColorsEnum = {}));
 let x = { name: 'Robert' };
-//# sourceMappingURL=advanced-types.js.map
+//# sourceMappingURL=02_advanced-types.js.map
