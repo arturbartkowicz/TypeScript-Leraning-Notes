@@ -1,3 +1,5 @@
+import { log_description } from './09_config'
+
 // AGENDA:
 // - Type Aliases
 // - Union Types
@@ -18,6 +20,8 @@
 
 // ----------     Type Aliases      ----------
 
+
+// The biggest advantage: You can reuse it in multiple places.
 
 type EmployeeAlias = {
 	readonly id: number,
@@ -45,6 +49,10 @@ enum ContactStatus {
 type ContactStatusAlias = 'active' | 'inactive' | 'new'
 // You can use that alias in another interface
 
+let contactStatus: ContactStatusAlias = 'new'
+
+log_description('Create a variable as a type alias. Type aliases is a good alternative for enums', contactStatus)
+
 
 // ----------     Union Types      ----------
 
@@ -60,16 +68,23 @@ function kgToLbs(weight: number | string): number {
   return parseInt(weight) * 2.2
 }
   
-  kgToLbs(10)
-  kgToLbs('10kg')
+kgToLbs(10)
+kgToLbs('10kg')
 
-  // Another example:
-  type ContactBirthDay = Date | number | string
+// Another example:
+type ContactBirthDay = Date | number | string
 
-  interface Contact {
-    id: number
-    birthDay?: ContactBirthDay
-  }
+interface Contact {
+  id: number
+  birthDay?: ContactBirthDay
+}
+
+let contact: Contact = {
+  id: 12,
+  birthDay: '24.10.1991'
+}
+
+log_description('Log the contact description', contact)
 
 
 // ----------     Intersection      ----------
@@ -78,18 +93,18 @@ function kgToLbs(weight: number | string): number {
 // Another technique for combining types.
 
 type Draggable = {
-  drag: () => void
+  drag: () => void
 }
 
 type Resizable = {
-  resize: () => void
+  resize: () => void
 }
 
 type UIWidget = Draggable & Resizable
 
 // Thanks to intersection we have defined new type, UIWidged which is Draggable and Resizable
 // Now with this type in place we can declare a variable which is a textBox.
-// To initialize this object, we needt to implement all members of draggable and resizable.
+// To initialize this object, we need to implement all members of draggable and resizable.
 
 let textBox: UIWidget = {
 	drag: () => {},
@@ -111,6 +126,15 @@ interface Example {
 
 type AddressableContact = Contact & Address
 
+let exampleAdress: Example = {
+  line3: 10,
+  line4: {
+    line1: 'Test line 1',
+    line2: 'Test line 2'
+  } 
+}
+
+log_description('Combine Interfaces and Types', exampleAdress)
 
 // ----------     typeof operator      ----------
 

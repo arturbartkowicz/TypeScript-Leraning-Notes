@@ -1,3 +1,5 @@
+import { log_description } from './09_config'
+
 // AGENDA:
 // - Build-in types
 // - Array
@@ -6,13 +8,6 @@
 // - Function
 // - Function without return value
 // - Objects
-
-
-function log_description(description: string) {
-  let dashes = ' ---------- '
-  console.log('')
-  console.log(dashes + description + dashes)
-}
 
 
 // ----------     Build-in types     ----------
@@ -142,8 +137,7 @@ enum Size {
     Large
 }
 
-log_description('Log Enum Size.Large')
-console.log(Size.Large)
+log_description('Log Enum Size.Large', Size.Large)
 
 // By default, TS compiler will assign to the first member the value of 0, and for 
 // the rest 1, 2, and so on...
@@ -174,7 +168,7 @@ let mySize: Size = Size.Medium
 // especially when you build an API for other people to use !!!
 
 function calculateTax (income: number): number {
-	return 0;
+	return income;
 }
 
 
@@ -223,8 +217,7 @@ function calculateTaxTest (income: number): void {}
 // calculateTax(10_000) 
 
 let calculatedTax = calculateTax(10)
-log_description('Return value from a function based on the condition')
-console.log(calculatedTax)
+log_description('Return value from a function based on the condition', calculatedTax)
 
 
 // ----------     Objects       ----------
@@ -261,5 +254,4 @@ console.log(calculatedTax)
 
 let employeeObject: {  id: number, name: string, fax?: number } = {id: 10, name: 'Artur'}
 
-log_description('Log Employee object')
-console.log(employeeObject)
+log_description('Log Employee object', employeeObject)

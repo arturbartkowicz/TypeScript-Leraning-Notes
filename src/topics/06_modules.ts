@@ -20,5 +20,5 @@ export class TestModule {
 
 
 // Jeśli mamy wiele modułów do wyeksportowania, możemy stworzyć osobny plik indexe.js który 
-// posłuży nam za (wiadro z eksportami) i później jeśli potrzebujemy wielu modułów e jednym pliku
+// posłuży nam za (wiadro z eksportami) i później jeśli potrzebujemy wielu modułów w jednym pliku
 // to zaimportujemy tylko index.js
