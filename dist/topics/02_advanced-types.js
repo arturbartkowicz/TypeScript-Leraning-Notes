@@ -41,6 +41,21 @@ let exampleAdress = {
     }
 };
 (0, _09_config_1.log_description)('Combine Interfaces and Types', exampleAdress);
+let quantity = 100;
+function greet(name) {
+    if (name)
+        console.log(name.toUpperCase);
+    else
+        console.log('Hola amigo, you have passed an Undefined value!');
+}
+(0, _09_config_1.log_description)('Pass undefined argument to a function');
+greet(undefined);
+function getCustomer(id) {
+    return id === 0 ? null : { birthday: new Date() };
+}
+let customer = getCustomer(0);
+(0, _09_config_1.log_description)('Log customer - refactore using optional chaining', customer);
+(0, _09_config_1.log_description)('Display a customer birthday, using optional chaining operator', customer === null || customer === void 0 ? void 0 : customer.birthday);
 const myType = { min: 1, max: 200 };
 function save(source) { }
 var ColorsEnum;

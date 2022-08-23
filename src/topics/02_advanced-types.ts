@@ -87,7 +87,7 @@ let contact: Contact = {
 log_description('Log the contact description', contact)
 
 
-// ----------     Intersection      ----------
+// ----------     Intersection Types     ----------
 
 
 // Another technique for combining types.
@@ -135,6 +135,124 @@ let exampleAdress: Example = {
 }
 
 log_description('Combine Interfaces and Types', exampleAdress)
+
+
+// ----------     Literal Types      ----------
+
+
+// To limit a values which we can assign to a variable we use literal type
+
+// We will annotate a variable with literal meaning (exact or specific) value.
+
+// let quantity: 50 | 100 = 100
+
+// Instead of hard-coding these literal values here we can create a custom type, using a type alias
+
+type Quantity = 50 | 100 
+let quantity: Quantity = 100
+
+// Literals don't have to be numbers, they also can be strings ex:
+
+type Metrics = 'cm' | 'inch'
+
+
+
+// ----------     Nullable Types      ----------
+
+
+// By default TS is very strict using null and undefined values, 
+// because they are a commont source of bugs in applications to deal
+
+function greet (name: string | null | undefined) {
+  if (name)
+    console.log(name.toUpperCase)
+  else
+    console.log('Hola amigo, you have passed an Undefined value!')
+}
+
+log_description('Pass undefined argument to a function')
+greet(undefined)
+
+// to deal with null or undefined values which we wanna pass to our function, 
+// we will have to change the configuration file (tsconfig.json) or use union 
+// types where we pass our arguments
+
+
+// ----------     Optional chaining      ----------
+
+
+// Using optional chaining (?.) we can simplify our code and remove the need for null checks.
+
+type Customer = {
+  birthday: Date
+}
+  
+function getCustomer(id: number): Customer | null {
+  return id === 0 ? null : { birthday: new Date() }
+}
+  
+let customer = getCustomer(0)
+
+log_description('Log customer - refactore using optional chaining', customer)
+  
+// if (customer !== null && customer !== undefined)
+//   console.log(customer.birthday)
+
+// There is a simple way to check it with the Optional property access operator.  
+// Because customer might be null or undefined, right after customer we write a '?'
+  
+log_description('Display a customer birthday, using optional chaining operator', customer?.birthday)
+  
+// This piece of code is executed only if the customer is not null or if it is not undefined
+  
+// If we want to specify the birthday as an optional parameter
+  
+// type Customer = {
+//   birthday?: Date
+// }
+  
+// console.log(customer?.birthday?.getFullYear)
+// The above piece of code will be executed only if we have a customer and if the 
+// customer has a birthday day.
+  
+// Optional element access operator - this is useful when we are dealing with arrays.
+  
+// customer?.[0] - element w array z indexem 0 może nie istnieć (być null or undefined). 
+// Jeśli chcemy sie przed tym zabezpieczyć, to właśnie używamy takiej składni.
+  
+// Optional call operator
+  
+// let log: any = null
+  
+// log?.('a') - this piece of code will get executed, only if log is referencing an actual function.
+
+
+
+// ----------     The Nullish Coaelscing Operator      ----------
+
+
+// Using the Nullish Coalescing Operator we can fallback to a default value when 
+// dealing with null/undefined objects.
+
+let speed: number | null = null
+let ride = {
+  // Falsy (undefined, null, '', false, 0)
+  // Nullish coalescing operator
+  speed: speed ?? 30 // - if speed is not null or undefined, use that value (speed)
+  // otherwise use 30 as a default value
+}
+  
+
+// ----------     Type Assertions      ----------
+
+
+// Sometimes we know more about the type of a variable than the TypeScript compiler. 
+// In those situations, we can use the as keyword to specify a different type than 
+// the one inferred by the compiler. This is called type assertion. 
+
+let phone = document.getElementById('phone') as HTMLInputElement // - we are specify target element
+
+phone.value
 
 // ----------     typeof operator      ----------
 
