@@ -191,7 +191,7 @@ function getCustomer(id: number): Customer | null {
   return id === 0 ? null : { birthday: new Date() }
 }
   
-let customer = getCustomer(0)
+let customer = getCustomer(1)
 
 log_description('Log customer - refactore using optional chaining', customer)
   
@@ -201,7 +201,8 @@ log_description('Log customer - refactore using optional chaining', customer)
 // There is a simple way to check it with the Optional property access operator.  
 // Because customer might be null or undefined, right after customer we write a '?'
   
-log_description('Display a customer birthday, using optional chaining operator', customer?.birthday)
+log_description('Display a customer birthday, using optional chaining operator')
+console.log(customer?.birthday)
   
 // This piece of code is executed only if the customer is not null or if it is not undefined
   
@@ -250,9 +251,40 @@ let ride = {
 // In those situations, we can use the as keyword to specify a different type than 
 // the one inferred by the compiler. This is called type assertion. 
 
-let phone = document.getElementById('phone') as HTMLInputElement // - we are specify target element
+// let phone = document.getElementById('phone') as HTMLInputElement // - we are specify target element
 
-phone.value
+// phone.value
+
+
+// ----------     The Unknown Type      ----------
+
+// To avoid using any type, we can use unknown. Then compiler will complain about 
+// methods on document, but we can use narrowing for narrow down the type of an object
+
+// !!! typeof works only with primitive types (string, boolean...) if you have a custom object
+// we will have to use another operator - instanceof !!!
+
+// Using unknown type is better than using any because compiler forces us to do some type checkin
+
+function render(document: unknown) {
+  if (typeof document === 'string') {
+    document.toUpperCase()
+  }
+
+  // if (document instanceof === WordDocument) {
+    
+  // }
+}
+
+
+// ----------     The never Type      ----------
+
+
+// Represent values that never occure. Not use that much
+// It is handy for the code that might be unreachable. Explanation in
+// the MOSH course
+// The line of code that might be never be executed, becouse of other lines of code
+
 
 // ----------     typeof operator      ----------
 
@@ -262,9 +294,14 @@ phone.value
 // but also in many other ways:
 
 const myType = { min: 1, max: 200 } // TS interfer the type ot this variable
-function save(source: typeof myType){} // With this code I can assure, that if someone
-                                       // want to call this function, the arameter which you
-                                       // can pass, must be same structure, as defined myType variable.
+
+function save(source: typeof myType){
+  log_description('typeof examples', source)
+} // With this code I can assure, that if someone
+  // want to call this function, the parameter which you
+  // can pass, must be same structure, as defined myType variable.
+
+save({min: 20, max: 100})
 
 
                               

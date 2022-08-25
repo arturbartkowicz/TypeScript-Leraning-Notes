@@ -53,11 +53,24 @@ greet(undefined);
 function getCustomer(id) {
     return id === 0 ? null : { birthday: new Date() };
 }
-let customer = getCustomer(0);
+let customer = getCustomer(1);
 (0, _09_config_1.log_description)('Log customer - refactore using optional chaining', customer);
-(0, _09_config_1.log_description)('Display a customer birthday, using optional chaining operator', customer === null || customer === void 0 ? void 0 : customer.birthday);
+(0, _09_config_1.log_description)('Display a customer birthday, using optional chaining operator');
+console.log(customer === null || customer === void 0 ? void 0 : customer.birthday);
+let speed = null;
+let ride = {
+    speed: speed !== null && speed !== void 0 ? speed : 30
+};
+function render(document) {
+    if (typeof document === 'string') {
+        document.toUpperCase();
+    }
+}
 const myType = { min: 1, max: 200 };
-function save(source) { }
+function save(source) {
+    (0, _09_config_1.log_description)('typeof examples', source);
+}
+save({ min: 20, max: 100 });
 var ColorsEnum;
 (function (ColorsEnum) {
     ColorsEnum["white"] = "#ffffff";
