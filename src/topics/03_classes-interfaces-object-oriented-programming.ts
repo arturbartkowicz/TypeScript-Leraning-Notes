@@ -1,3 +1,5 @@
+import { log_description } from './09_config'
+
 // AGENDA:
 // - Creating Classes
 // - Creating Objects
@@ -53,10 +55,14 @@ class Account {
 
 
 let account = new Account(1, 'Artur', 0)
+
+log_description('Log an instance of Account', account)
+
 account.deposit(100)
-// If you are using a type guard to narrow down a type, and you are dealing with a custom object,
-// you should use an instanceof operator instead of type:
-console.log(account instanceof Account)
+// If you are using a type guard to narrow down a type, and you are dealing with 
+// a custom object, you should use an instanceof operator instead of type:
+
+log_description('Check if account is instanceof Account class', account instanceof Account)
 
 
 // ----------			Read only and Optional Properties			----------
@@ -75,9 +81,10 @@ console.log(account instanceof Account)
 
 // Access Modifiers
 //  - public
-// 	- private - property accessable within class. By the convention we prefixed private properties with underscore. 
-//              We only use private properties for writing robust code. Private keyword we can apply to the method 
-//              as well.
+// 	- private - property accessable within class. By the convention we prefixed 
+//              private properties with underscore. 
+//              We only use private properties for writing robust code. Private 
+//              keyword we can apply to the method as well.
 // 	- protected
 
 // When we define a properties, all the properties are public by default
@@ -86,8 +93,8 @@ console.log(account instanceof Account)
 // console.log(account.balance) -> because balance is a private property now. 
 //                                 But we can define a method which will return a value for us.
 
-console.log(account.getBalance())
 
+log_description('Return property _balance which is private via getBalance public method', account.getBalance())
 
 
 // ----------			Parameter Properties			----------

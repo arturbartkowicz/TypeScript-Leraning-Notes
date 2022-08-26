@@ -290,7 +290,6 @@ function render(document: unknown) {
 
 
 // This is JS keyword. We can use it in TS on various ways, ex. for Narrowing
-
 // but also in many other ways:
 
 const myType = { min: 1, max: 200 } // TS interfer the type ot this variable

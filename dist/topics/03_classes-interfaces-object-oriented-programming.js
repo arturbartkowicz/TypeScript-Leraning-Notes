@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const _09_config_1 = require("./09_config");
 class Account {
     constructor(id, owner, _balance) {
         this.id = id;
@@ -17,9 +19,10 @@ class Account {
     }
 }
 let account = new Account(1, 'Artur', 0);
+(0, _09_config_1.log_description)('Log an instance of Account', account);
 account.deposit(100);
-console.log(account instanceof Account);
-console.log(account.getBalance());
+(0, _09_config_1.log_description)('Check if account is instanceof Account class', account instanceof Account);
+(0, _09_config_1.log_description)('Return property _balance which is private via getBalance public method', account.getBalance());
 class SeatAssignement {
 }
 let seats = new SeatAssignement();
