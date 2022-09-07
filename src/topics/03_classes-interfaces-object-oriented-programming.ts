@@ -170,7 +170,8 @@ let seats = new SeatAssignement()
 seats.A1 = 'Mosh'
 // seats['A1'] = 'Mosh'  -> same think than above (different syntax)
 seats.A2 = 'John'
-console.log(seats) // => SeatAssignement { A1: 'Mosh', A2: 'John' }
+
+log_description('Index Signatures - creating properties dynamically, but with type checking', seats)
 
 
 
@@ -194,8 +195,8 @@ ride1.start()
 let ride2 = new Ride()
 ride2.start()
 
-console.log(ride1.activeRides) // => 1
-console.log(ride2.activeRides) // => 1
+log_description('Log ride1.activeRides', ride1.activeRides) // => 1
+log_description('Log ride2.activeRides', ride2.activeRides) // => 1
 
 // Here we are dealing with 2 separate objects, ride1 and ride2, and each object is in separate space in a memory.
 // So each object is independently tracking ActiveRides. We need some kind of a global state.
@@ -217,13 +218,13 @@ ride11.start()
 let ride22 = new RideOne()
 ride22.start()
 
-console.log(RideOne.activeRides) // => 2
+log_description('Log RideOne.activeRides. Demonstarate how static can track global state', RideOne.activeRides) // => 2
 
 
 // ----------			Inheritence			----------
 
 
-// mechanizm który pozwala na ponowne uuzycie kodu.
+// mechanizm który pozwala na ponowne uzycie kodu.
 // super -> keword to reference a base class
 
 class Person {
@@ -247,15 +248,15 @@ class Student extends Person {
 	}
 
 	taketest() {
-		console.log("Taking a test")
+		log_description('Inheritance: log method takeTest()', 'Taking a test')
 	}
 }
 
 let student = new Student(1, 'John', 'Doe')
 
-console.log(student.fullName)
-console.log(student.walk)
-console.log(student.taketest())
+log_description('Inheritance: log full name', student.fullName)
+log_description('Inheritance: log method walk()', student.walk)
+log_description('Inheritance: log method takeTest()', student.taketest())
 
 // Super classes we should implement in a seperate files
 
@@ -271,7 +272,7 @@ class Teacher extends Person{
 }
 
 let teacher = new Teacher('Muhamad', 'Abduhl')
-console.log(teacher.fullName)
+log_description('Ovverriding Parent method', teacher.fullName)
 
 
 // ----------			Polymorphizm			----------
