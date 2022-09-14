@@ -280,8 +280,9 @@ log_description('Ovverriding Parent method', teacher.fullName)
 
 // When object can take many different forms
 
-// Lets call the function printNames which is declered under, and give it an array of Person object.
-// Every student is a Person, and every teacher is a Person, so in this array we can add a Student or Teacher object
+// Lets call the function printNames which is declered under, and give it an 
+// array of Person object. Every student is a Person, and every teacher is a 
+// Person, so in this array we can add a Student or Teacher object
 
 class Principal extends Person {
 	override get fullName() {
@@ -299,13 +300,15 @@ printNames([
 // => Profesor Artur Bartkowicz
 // We get different output depending on the different person.
 
-// In each iteration of the for loop this Person object is taking a different form (A form of a student or teacher)
-// Person object is taking many different forms and is acting polimorficly
+// In each iteration of the for loop this Person object is taking a different 
+// form (A form of a student or teacher). Person object is taking many different 
+// forms and is acting polimorficly
 
-// Why this is powerfull? Because we can create a new class ex. Principal, and creating state without making a single 
-// change to this bottom function.
+// Why this is powerfull? Because we can create a new class ex. Principal, and 
+// creating state without making a single change to this bottom function.
 
-// Stworzyłem wyżej dodatkową klasę Principal, wrzucam do array printnames i mam dodatkowy output z funkcji
+// Stworzyłem wyżej dodatkową klasę Principal, wrzucam do array printnames i mam 
+// dodatkowy output z funkcji
 
 // => John Smith
 // => Profesor Artur Bartkowicz
@@ -315,7 +318,7 @@ printNames([
 // We have implemented some new functionality just by writing new code.
 // This brings us to Open Closed Principle.
 
-// ! Clases should be open for extension and closed for modification !
+// !!! Clases should be open for extension and closed for modification !!!
 
 // with override key word we can achieve this polimorphic behaviour
 
@@ -337,10 +340,12 @@ function printNames(people: Person[]) {
 
 
 // If you want to stop us of being able to create an instance of the Shape class
-// we mark this class as abstract
-// with abstract keyword we are telling the TS compiler, that this class is abstract, not ready,
-// or it need another class, like circle to extend it.
+// we mark this class as abstract. With abstract keyword we are telling the TS 
+// compiler, that this class is abstract, not ready,
+// or it need another class, like circle has to extend it.
 // Abstract class is like uncooked meal. Is not ready.
+
+// What does it mean to render a Shape? We cannot render a shape, it is abstract
 
 abstract class Shape {
 	constructor(public color: string) {}
@@ -367,7 +372,7 @@ class Circle extends Shape {
 // ----------			Interfaces			----------
 
 
-// Interfaces - to define or the shape of an object
+// Interfaces - to describe an interface or the shape of an object
 
 // In TS, Interfaces and Types Aliases can be used interchangebly
 // Both can be used to describe the shape of the object
@@ -396,7 +401,7 @@ interface Calendar {
 	removeEvent(): void
 }
 
-// In IS we don't have interfaces. Interfaces which we describe is purley use by 
+// In JS we don't have interfaces. Interfaces which we describe is purley use by 
 // the compiler for type checkin. After compile the code, there is nothing in JS file
 // if we use a interface
 
@@ -406,13 +411,15 @@ interface Calendar {
 // better to use an interface, then our code will be more concise and shorter.
 
 // Interfaces can't have a method implementations, only method declarations
+// But if we have some code implementations, method which we want to share with
+// subclasses, we shoul use an abstract class
 
 interface CloudCalendar extends Calendar {
 	sync(): void
 }
 
 // Now we want to have a real life class. We use implements keyword
-// ctr + .     -> komenda która autouzupełni interface
+// cmd + .     -> komenda która autouzupełni interface
 
 class GoogleCalendar implements Calendar {
 	constructor(public name: string){}
@@ -433,6 +440,10 @@ class GoogleCalendar implements Calendar {
 // Używając interfejsów, możemy być pewni, że np w dwóch różnych klasach (GoogleCalendar, OutlookCalendar)
 // będziemy mieć takie samy nazwy metod, określone z góry, czy nazwę parametru. Póżniej implementacja
 // może być inna tych metod, ale wywołanie ich takie samo.
+
+
+// Interface vs Abstract class
+// https://stackoverflow.com/questions/50110844/what-is-the-difference-between-interface-and-abstract-class-in-typescript
 
 
 // --------------------------------------------------------------------------------
